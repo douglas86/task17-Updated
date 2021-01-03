@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const Form = () => {
@@ -5,6 +6,12 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        axios.post(`http://localhost:3001`, { list: list }).then((res) => {
+            console.log(res);
+        });
+
+        window.location.reload();
     };
 
     console.log(list);
