@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const Form = () => {
-    const [list, setList] = useState('');
+    const [list, setList] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`http://localhost:3001`, { list: list }).then((res) => {
+        axios.post(`http://localhost:3001`, list).then((res) => {
             console.log(res);
         });
 
@@ -22,7 +22,7 @@ const Form = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    onChange={(e) => setList(e.target.value)}
+                    onChange={(e) => setList({ Todo: e.target.value })}
                     required
                 />
                 <button type="submit">Add</button>
