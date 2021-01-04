@@ -6,7 +6,7 @@ import '../extras/App.css';
 import axios from 'axios'; // used for CRUD operations
 
 const App = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([]); // data that is received from express
 
     // Fetches data from index.js on server side
     useEffect(() => {
@@ -16,6 +16,18 @@ const App = () => {
         });
     }, []);
 
+    const deleteRow = (id, e) => {
+        axios.delete(`http://localhost:3001/${id}`).then((res) => {
+            console.log(res);
+            console.log(res.data);
+
+            const posts = data.filter((item) => item.id !== id);
+            setData({ posts });
+        });
+
+        window.location.reload();
+    };
+
     console.log(data);
 
     return (
@@ -23,10 +35,18 @@ const App = () => {
             <header className="App-header">
                 <p>Home Page</p>
                 <Form />
-                {data.map((value, index) => {
+                {data.map((posts, index) => {
                     return (
                         <div key={index}>
-                            <p>{value.Todo}</p>
+                            <p>
+                                {posts.Todo}{' '}
+                                <button
+                                    type="submit"
+                                    onClick={(e) => deleteRow(posts.id, e)}
+                                >
+                                    Delete
+                                </button>
+                            </p>
                         </div>
                     );
                 })}

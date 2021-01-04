@@ -28,6 +28,16 @@ app.post(`/`, (req, res) => {
     });
 });
 
+app.delete(`/:id`, (req, res) => {
+    console.log('users', users);
+    const posts = users.filter((item) => item.id !== req.params.id);
+    users.splice(req.params.id - 1, 1);
+    fs.writeFile('app.json', JSON.stringify(users), (err) => {
+        if (err) throw err;
+        console.log('writing done!!');
+    });
+});
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
