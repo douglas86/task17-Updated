@@ -15,9 +15,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-let arr = ['one', 'two'];
-let arr2 = [];
-
 app.get(`/`, (req, res) => {
     res.send(users);
 });

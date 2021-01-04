@@ -1,2 +1,2 @@
 Next steps:
-Getting the formatting right in app.json file
+Deleting from a json file with express
