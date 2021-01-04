@@ -26,7 +26,7 @@ const App = () => {
                 {data.map((value, index) => {
                     return (
                         <div key={index}>
-                            <p>{value.value}</p>
+                            <p>{value.Todo}</p>
                         </div>
                     );
                 })}
