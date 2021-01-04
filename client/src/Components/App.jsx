@@ -28,6 +28,14 @@ const App = () => {
         window.location.reload();
     };
 
+    const editRow = (index, id, e) => {
+        axios
+            .put(`http://localhost:3001/${index}/${id}`, { Todo: e })
+            .then((res) => {
+                console.log(res);
+            });
+    };
+
     console.log(data);
 
     return (
@@ -42,10 +50,22 @@ const App = () => {
                                 {posts.Todo}{' '}
                                 <button
                                     type="submit"
-                                    onClick={(e) => deleteRow(posts.id, e)}
+                                    onClick={(e) => deleteRow(index, e)}
                                 >
                                     Delete
                                 </button>
+                                <input
+                                    style={{ width: '80px' }}
+                                    type="text"
+                                    onChange={(e) => {
+                                        editRow(
+                                            index,
+                                            posts.id,
+                                            e.target.value
+                                        );
+                                    }}
+                                />
+                                <button type="submit">Edit</button>
                             </p>
                         </div>
                     );

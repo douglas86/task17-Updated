@@ -31,11 +31,22 @@ app.post(`/`, (req, res) => {
 app.delete(`/:id`, (req, res) => {
     console.log('users', users);
     const posts = users.filter((item) => item.id !== req.params.id);
-    users.splice(req.params.id - 1, 1);
+    users.splice(req.params.id, 1);
     fs.writeFile('app.json', JSON.stringify(users), (err) => {
         if (err) throw err;
         console.log('writing done!!');
     });
+});
+
+app.put(`/:index/:id`, (req, res) => {
+    console.log('req.body', req.body.Todo);
+    const posts = users.filter((item) => item.id !== req.params.id);
+    console.log(users);
+    users.splice(req.params.index, 1, {
+        id: parseInt(req.params.id),
+        Todo: req.body.Todo,
+    });
+    console.log(users);
 });
 
 const PORT = process.env.PORT || 3001;
