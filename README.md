@@ -1,5 +1,5 @@
 Next steps:
-Sort out all the small bugs, check if everything is working as expected
+The put needs to edit the app.json file
 
 Bugs:
 there is a small bug when delete is being pressed

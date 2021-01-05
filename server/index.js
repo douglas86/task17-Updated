@@ -39,11 +39,17 @@ app.delete(`/:id`, (req, res) => {
 });
 
 app.put(`/:index/:id`, (req, res) => {
-    console.log('req.body', req.body.Todo);
-    const posts = users.filter((item) => item.id !== req.params.id);
-    users.splice(req.params.index, 1, {
-        id: parseInt(req.params.id),
-        Todo: req.body.Todo,
+    fs.readFile('app.json', (err, data) => {
+        if (err) throw err;
+        let arr = JSON.parse(data);
+        arr.splice(req.params.index, 1, {
+            id: parseInt(req.params.id),
+            Todo: req.body.Todo,
+        });
+        fs.writeFile('app.json', JSON.stringify(arr), (err) => {
+            if (err) throw err;
+            console.log('writing done!!');
+        });
     });
 });
 
