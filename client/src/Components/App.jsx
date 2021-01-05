@@ -36,7 +36,9 @@ const App = () => {
             });
     };
 
-    console.log(data);
+    const handleSubmit = () => {
+        window.location.reload();
+    };
 
     return (
         <div className="App">
@@ -65,7 +67,9 @@ const App = () => {
                                         );
                                     }}
                                 />
-                                <button type="submit">Edit</button>
+                                <button type="submit" onClick={handleSubmit}>
+                                    Edit
+                                </button>
                             </p>
                         </div>
                     );

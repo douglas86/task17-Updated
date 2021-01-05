@@ -14,8 +14,6 @@ const Form = () => {
         window.location.reload();
     };
 
-    console.log(list);
-
     return (
         <div>
             <h2>Form</h2>

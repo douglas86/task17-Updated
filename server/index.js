@@ -41,12 +41,10 @@ app.delete(`/:id`, (req, res) => {
 app.put(`/:index/:id`, (req, res) => {
     console.log('req.body', req.body.Todo);
     const posts = users.filter((item) => item.id !== req.params.id);
-    console.log(users);
     users.splice(req.params.index, 1, {
         id: parseInt(req.params.id),
         Todo: req.body.Todo,
     });
-    console.log(users);
 });
 
 const PORT = process.env.PORT || 3001;
