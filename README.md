@@ -1,11 +1,18 @@
-Next steps:
-The put needs to edit the app.json file
+Run the app cd into client and cd into server
+on two different servers
 
-Bugs:
-there is a small bug when delete is being pressed
-Problem:
-When delete is pressed it doesn't delete the correct item in the array,
-it seems to delete the one after
+To add to the app.json
+type a word in the address bar,
+then press add
+it will be added to the app.json file
 
-Tutorial for filter in data recieved from api
-https://www.itsolutionstuff.com/post/react-axios-delete-request-exampleexample.html
+To delete an entry from app.json
+press the delete button next to the entry
+
+To update an entry type in the input next to the word
+then press edit
+that will then edit in the app.json file
+
+it will auto refresh every time entries are added or deleted from app.json file
+
+it used useEffect hook to retrieve data
